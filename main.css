@@ -1,0 +1,137 @@
+/* ================================================
+   CSS Variables & Base Styles
+   ================================================ */
+
+:root {
+    /* Colors */
+    --earth-dark: #2a1810;
+    --earth-medium: #4a3528;
+    --earth-light: #8b6f47;
+    --grass-green: #4a7c3a;
+    --fire-orange: #d97706;
+    --blood-red: #dc2626;
+    
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    
+    /* Typography */
+    --font-title: 'Cinzel', serif;
+    --font-body: 'Courier Prime', monospace;
+    
+    /* Game Constants */
+    --tile-size: 40px;
+    --vision-radius: 200px;
+    
+    /* Z-Index Layers */
+    --z-game: 1;
+    --z-ui: 100;
+    --z-overlay: 500;
+    --z-modal: 1000;
+    --z-gathering: 2000;
+}
+
+/* ================================================
+   Reset & Base Styles
+   ================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: #f5f5f5;
+    overflow: hidden;
+    background: #1a1410;
+}
+
+/* ================================================
+   Fonts
+   ================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Courier+Prime:wght@400;700&display=swap');
+
+/* ================================================
+   Scrollbar
+   ================================================ */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--earth-medium);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--earth-light);
+}
+
+/* ================================================
+   Animations
+   ================================================ */
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}

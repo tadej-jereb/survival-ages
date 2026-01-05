@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Survival Ages - From Stone to Steel</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/ui.css">
+    <link rel="stylesheet" href="css/modals.css">
+    
+    <style>
+        /* Temporary inline styles for features not yet extracted */
+        /* These will be moved to separate CSS files in next phase */
+        
+        /* Mobile Menu Button */
+        #mobileMenuBtn {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--fire-orange);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 150;
+            box-shadow: 0 4px 20px rgba(217, 119, 6, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            #mobileMenuBtn { display: block; }
+            #rightPanel {
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            }
+            #rightPanel.open { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen">
+        <div class="login-box">
+            <h1>SURVIVAL AGES</h1>
+            <p>From Stone to Steel - Build Your Legacy</p>
+            <input type="text" id="playerNameInput" placeholder="Enter your name" maxlength="20" />
+            <button id="joinGameBtn">BEGIN JOURNEY</button>
+        </div>
+    </div>
+
+    <!-- Game Container -->
+    <div id="gameContainer" style="display: none;">
+        <canvas id="gameCanvas"></canvas>
+        
+        <!-- Top HUD -->
+        <div class="ui-overlay" id="topHUD">
+            <div class="stat-panel">
+                <h3>⚔ Vitals</h3>
+                <div class="stat-bar">
+                    <span class="stat-icon">❤️</span>
+                    <div class="bar-container">
+                        <div class="bar-fill health-bar" id="healthBar" style="width: 100%"></div>
+                    </div>
+                    <span id="healthText">100</span>
+                </div>
+                <div class="stat-bar">
+                    <span class="stat-icon">🍖</span>
+                    <div class="bar-container">
+                        <div class="bar-fill hunger-bar" id="hungerBar" style="width: 100%"></div>
+                    </div>
+                    <span id="hungerText">100</span>
+                </div>
+                <div class="stat-bar">
+                    <span class="stat-icon">⚡</span>
+                    <div class="bar-container">
+                        <div class="bar-fill stamina-bar" id="staminaBar" style="width: 100%"></div>
+                    </div>
+                    <span id="staminaText">100</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuBtn" onclick="toggleMobileMenu()">📦</button>
+
+        <!-- Right Panel -->
+        <div id="rightPanel">
+            <div class="panel-section">
+                <h3>⚙️ Quick Menu</h3>
+                <div class="quick-buttons">
+                    <button class="quick-btn" id="openCharacterBtn">👤 Character</button>
+                </div>
+                <div class="quick-buttons">
+                    <button class="quick-btn" id="openInventoryBtn">📦 Inventory</button>
+                </div>
+                <div class="quick-buttons">
+                    <button class="quick-btn" id="openCraftingBtn">⚒️ Crafting</button>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <h3>👥 Players Online</h3>
+                <div id="playersList"></div>
+            </div>
+        </div>
+
+        <!-- Message Log -->
+        <div class="ui-overlay" id="messageLog"></div>
+        
+        <!-- Gathering Progress (inline for now) -->
+        <div id="gatheringProgress" style="display:none;"></div>
+
+        <!-- Cave Overlay (inline for now) -->
+        <div id="caveOverlay" style="display:none;"></div>
+        <div id="caveIndicator" style="display:none;"></div>
+    </div>
+
+    <!-- Modals will be inserted here by JavaScript -->
+    <div id="modalsContainer"></div>
+
+    <!-- Main JavaScript Entry Point -->
+    <script type="module" src="js/main.js"></script>
+    
+    <script>
+        // Temporary global helper for mobile menu (will be moved to module)
+        function toggleMobileMenu() {
+            document.getElementById('rightPanel').classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
